@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+<style type="text/css">
+.block{position:absolute;
+background-color:blue;width:30px;height:20px;padding-top:10px;
+float:left;
+}.block
+/*.block{}.block 并排：float:left*/
+
+</style>
+
+<script>
+function move(elem){
+  var left = 0;
+  var i=0
+  function frame(){
+    if(left<250)i++
+	else i--
+    left+=i;
+	elem.style.top = left + 'px'
+	
+  }
+    var id = setInterval(frame,20)
+}
+
+function gravity(elem){
+  var height = 0;
+  var v = 0;
+  function frame(){
+      if(height<=90){
+	      if(v>=0)v=v+0.5-0.25
+		  else v= v+0.5+0.25
+	  }
+      else if(v<3){
+	      clearInterval(id)
+	  } 
+	  else v=0-v	  
+	  height += v
+	  elem.style.top=height+'%'
+  }
+  var id = setInterval(frame,20)
+}
+</script>
+
+</head>
+<body>
+
+    <div class="block" onclick="move(this)"></div>
+	<br>
+	<br>
+    <div class="block" onclick="gravity(this)"></div>
+</body>
+</html>

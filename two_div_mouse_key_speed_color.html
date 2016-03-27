@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+<style type="text/css">
+</style>
+
+
+
+</head>
+<body>
+
+<div></div>
+
+</body>
+<script>
+
+var nodes = {},i=0;
+
+function newTextNode(id,x,y,w,h,r,g,b,str){
+
+  var node=document.createTextNode(str);
+  document.body.appendChild(node);
+  //elemPosition(node,x,y);
+  //elemSize(node,w,h);
+  elemFontColor(node,100,180,180);
+  elemPosition(node,x,y);
+  elemSize(node,w,h);
+  elemBgColor(node,r,g,b);
+  nodes[id] = node;
+}
+
+function newDivNode(id,x,y,w,h,r,g,b,str){//
+  var node=document.createElement("div");
+  
+  document.body.appendChild(node);
+  node.style.position = "absolute";
+  elemFontColor(node,100,180,180);
+  elemPosition(node,x,y);
+  elemSize(node,w,h);
+  elemBgColor(node,r,g,b);
+  //node.innerText = x + " "+y + " "+node.style.width + " "+node.style.height;
+  nodes[id] = node;
+}
+
+function rmTextNode(id){
+  document.body.removeChild(nodes.id);
+  i--;
+}
+
+function newColor(red, green, blue){
+  return "rgb("+red+","+green+","+blue+")";
+}
+
+function elemBgColor(elem,r,g,b){
+  elem.style.backgroundColor = newColor(r,g,b);
+}
+
+function elemFontColor(elem,r,g,b){
+  elem.style.color = newColor(r,g,b);
+}
+
+function elemSize(elem,w,h){
+  elem.style.width = w +"px";
+  elem.style.height = h + "px";
+}
+
+function elemPosition(elem,x,y){
+  elem.style.left = x + "px";
+  elem.style.top = y + "px";
+}
+
+onkeypress = function(e){
+  //newTextNode(i++,mouseStart.x,mouseStart.y,mouseEnd.x-mouseStart.x,mouseEnd.y-mouseStart.y,100,100,100,"o")
+}
+mouse = {x:0,y:0};
+onmousemove = function(e){
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+  //document.bgColor = color(0,0,0);
+};
+
+mouseStart = {x:0, y:0}
+mouseEnd = {x:0, y:0}
+onmousedown = function(e){
+  mouseStart.x = e.clientX;
+  mouseStart.y = e.clientY;
+}
+
+onmouseup = function(e){//
+  mouseEnd.x = e.clientX;
+  mouseEnd.y = e.clientY;
+  var XYWH = twoPointsToXYWH(mouseStart.x,mouseStart.y,mouseEnd.x,mouseEnd.y)
+  newDivNode(i++,XYWH.x,XYWH.y,XYWH.w,XYWH.h,100,100,100,"o")
+}
+
+onclick = function(e){
+  newDivNode(i++,mouse.x,mouse.y,40,40,100,100,100,"o")
+}
+
+function twoPointsToXYWH(a,b,c,d){
+  var XYWH={x:a,y:b,w:c-a,h:d-b}
+  if(a>c){XYWH.x=c;XYWH.w=-XYWH.w}
+  if(b>d){XYWH.y=d;XYWH.h=-XYWH.h}
+  return XYWH;
+}
+
+</script>
+</html>
