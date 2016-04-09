@@ -4,7 +4,7 @@
     <title>Two.js: Dynamic Text</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <script src="./third-party/url.js"></script>
+<!--     <script src="./third-party/url.js"></script> -->
     <script src="./third-party/jquery.js"></script>
     <script src="./third-party/two.js"></script>
     <script src='./third-party/has.js'></script>
@@ -16,10 +16,19 @@
   <body style="background: #efefef">
     <div class="scripts">
       <script>
-
+	  
+	  			  length=100;
+				  words='卿同学 你好 你知道你有多美丽么';
+				  p=-1;
+				  function word(){
+                      p = (p+1)%length;
+					  return words[p];
+				  }
+	  
         $(function() {
 
-          var type = /(svg|webgl)/.test(url.type) ? url.type : 'canvas';
+ //         var type = /(svg|webgl)/.test(url.type) ? url.type : 'canvas';
+          var type = 'canvas';
           var two = new Two({
             type: Two.Types[type],
             fullscreen: true,
@@ -30,13 +39,13 @@
           var gravity = new Two.Vector(0, 0.66);
 
           var styles = {
-            family: 'proxima-nova, sans-serif',
+//            family: 'proxima-nova, sans-serif',
             size: 50,
             leading: 50,
             weight: 900
           };
 
-          var directions = two.makeText(has.mobile ? 'Tap Me' : 'Start Typing', two.width / 2, two.height / 2, styles);
+          var directions = two.makeText(has.mobile ? '卿同学 你好' : '卿同学 你好', two.width / 2, two.height / 2, styles);
           directions.fill = 'white';
 
           $(window)
@@ -45,8 +54,14 @@
               add(character);
             })
             .bind('touchstart', function() {
-              var r = Math.random();
-              var character = String.fromCharCode(Math.floor(r*26) + (r>0.5?97:65));
+              //var r = Math.random();
+              //var character = String.fromCharCode(Math.floor(r*26) + (r>0.5?97:65)); 
+			 
+
+			  
+			  
+			  var character = word();
+			  //alert(character);
               add(character);
             });
 
@@ -94,7 +109,7 @@
 
       </script>
     </div>
-    <script>
+<!--     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -103,6 +118,6 @@
       ga('create', 'UA-40550435-1', 'github.com');
       ga('send', 'pageview');
 
-    </script>
+    </script> -->
   </body>
 </html>
