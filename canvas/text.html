@@ -18,11 +18,14 @@
       <script>
 	  
 	  			  length=100;
-				  words='卿同学 你好 你知道你有多美丽么';
+				  words='卿同学 你好 你知道 你有 多美丽么 \
+				  /\ _ /\ ';
 				  p=-1;
 				  function word(){
-                      p = (p+1)%length;
-					  return words[p];
+				      var wordStart = p+1;
+					  while(words[++p]!=' ');
+					  if(p>=length)p=-1;
+					  return words.substring(wordStart,p);
 				  }
 	  
         $(function() {
@@ -36,7 +39,7 @@
           }).appendTo(document.body);
 
           var characters = [];
-          var gravity = new Two.Vector(0, 0.66);
+          var gravity = new Two.Vector(0, 0.55);
 
           var styles = {
 //            family: 'proxima-nova, sans-serif',
@@ -45,7 +48,7 @@
             weight: 900
           };
 
-          var directions = two.makeText(has.mobile ? '卿同学 你好' : '卿同学 你好', two.width / 2, two.height / 2, styles);
+          var directions = two.makeText(has.mobile ? 'Hello QML' : 'Hello QML', two.width / 2, two.height / 2, styles);
           directions.fill = 'white';
 
           $(window)
