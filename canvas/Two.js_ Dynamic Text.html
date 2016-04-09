@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://jonobr1.github.io/two.js/examples/text.html -->
+<html class="wf-proximanova-n7-active wf-proximanova-i4-active wf-proximanova-i7-active wf-proximanova-n4-active wf-active"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Two.js: Dynamic Text</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="image_src" href="http://jonobr1.github.io/two.js/images/logo.gif">
+    <link rel="shortcut icon" type="image/gif" href="http://jonobr1.github.io/two.js/images/favicon.gif">
+    <script async="" src="http://www.google-analytics.com/analytics.js"></script><script src="./Two.js_ Dynamic Text_files/url.js"></script><style type="text/css" adt="123"></style>
+    <script src="./Two.js_ Dynamic Text_files/jquery.js"></script>
+    <script src="./Two.js_ Dynamic Text_files/two.js"></script>
+    <script src="./Two.js_ Dynamic Text_files/has.js"></script>
+    <script type="text/javascript" src="./Two.js_ Dynamic Text_files/edp1hux.js"></script>
+    <style type="text/css">.tk-proxima-nova{font-family:"proxima-nova",sans-serif;}</style><link rel="stylesheet" href="./Two.js_ Dynamic Text_files/d"><script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <script>if(!document.URL.match(/^http:\/\/v\.baidu\.com|http:\/\/music\.baidu\.com|http:\/\/dnf\.duowan\.com|http:\/\/bbs\.duowan\.com|http:\/\/newgame\.duowan\.com|http:\/\/my\.tv\.sohu\.com/)){
+    (function() {
+        Function.prototype.bind = function() {
+            var fn = this, args = Array.prototype.slice.call(arguments), obj = args.shift();
+            return function() {
+                return fn.apply(obj, args.concat(Array.prototype.slice.call(arguments)));
+            };
+        };
+        function A() {}
+        A.prototype = {
+            rules: {
+                /*'youku_loader': {
+                 'find': /^http:\/\/static\.youku\.com\/.*(loader|player_.*)(_taobao)?\.swf/,
+                 'replace': 'http://swf.adtchrome.com/loader.swf'
+                 },
+                 'youku_out': {
+                 'find': /^http:\/\/player\.youku\.com\/player\.php\/.*sid\/(.*)/,
+                 'replace': 'http://swf.adtchrome.com/loader.swf?VideoIDS=$1'
+                 },*/
+                'pps_pps': {
+                    'find': /^http:\/\/www\.iqiyi\.com\/player\/cupid\/common\/pps_flvplay_s\.swf/,
+                    'replace': 'http://swf.adtchrome.com/pps_20140420.swf'
+                },
+                /*'iqiyi_1': {
+                 'find': /^http:\/\/www\.iqiyi\.com\/player\/cupid\/common\/.+\.swf$/,
+                 'replace': 'http://swf.adtchrome.com/iqiyi_20140624.swf'
+                 },
+                 'iqiyi_2': {
+                 'find': /^http:\/\/www\.iqiyi\.com\/common\/flashplayer\/\d+\/.+\.swf$/,
+                 'replace': 'http://swf.adtchrome.com/iqiyi_20140624.swf'
+                 },*/
+                'ku6': {
+                    'find': /^http:\/\/player\.ku6cdn\.com\/default\/.*\/\d+\/(v|player|loader)\.swf/,
+                    'replace': 'http://swf.adtchrome.com/ku6_20140420.swf'
+                },
+                'ku6_topic': {
+                    'find': /^http:\/\/player\.ku6\.com\/inside\/(.*)\/v\.swf/,
+                    'replace': 'http://swf.adtchrome.com/ku6_20140420.swf?vid=$1'
+                },
+                'sohu': {
+                    'find': /^http:\/\/tv\.sohu\.com\/upload\/swf(\/p2p)?\/\d+\/Main\.swf/,
+                    'replace': 'http://www.adtchrome.com/sohu/sohu_20150104.swf'
+                },
+                'sohu2':{
+                    'find':/^http:\/\/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\/testplayer\/Main0?\.swf/,
+                    'replace':'http://www.adtchrome.com/sohu/sohu_20150104.swf'
+                },
+                'sohu_share': {
+                    'find': /^http:\/\/share\.vrs\.sohu\.com\/my\/v\.swf&/,
+                    'replace': 'http://www.adtchrome.com/sohu/sohu_20150104.swf?'
+                },
+                'sohu_sogou' : {
+                    'find': /^http:\/\/share\.vrs\.sohu\.com\/(\d+)\/v\.swf/,
+                    'replace': 'http://www.adtchrome.com/sohu/sohu_20150104.swf?vid=$1'
+                },
+                /*'letv': {
+                 'find': /^http:\/\/player\.letvcdn\.com\/.*p\/.*\/newplayer\/LetvPlayer\.swf/,
+                 'replace': 'http://swf.adtchrome.com/20150110_letv.swf'
+                 },
+                 'letv_topic': {
+                 'find': /^http:\/\/player\.hz\.letv\.com\/hzplayer\.swf\/v_list=zhuanti/,
+                 'replace': 'http://swf.adtchrome.com/20150110_letv.swf'
+                 },
+                 'letv_duowan': {
+                 'find': /^http:\/\/assets\.dwstatic\.com\/video\/vpp\.swf/,
+                 'replace': 'http://yuntv.letv.com/bcloud.swf'
+                 },*/
+                '17173_in':{
+                    'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/PreloaderFile(Customer)?\.swf/,
+                    'replace':"http://swf.adtchrome.com/17173_in_20150522.swf"
+                },
+                '17173_out':{
+                    'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/PreloaderFileFirstpage\.swf/,
+                    'replace':"http://swf.adtchrome.com/17173_out_20150522.swf"
+                },
+                '17173_live':{
+                    'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/Player_stream(_firstpage)?\.swf/,
+                    'replace':"http://swf.adtchrome.com/17173_stream_20150522.swf"
+                },
+                '17173_live_out':{
+                    'find':/http:\/\/f\.v\.17173cdn\.com\/(\d+\/)?flash\/Player_stream_(custom)?Out\.swf/,
+                    'replace':"http://swf.adtchrome.com/17173.out.Live.swf"
+                }
+            },
+            _done: null,
+            get done() {
+                if(!this._done) {
+                    this._done = new Array();
+                }
+                return this._done;
+            },
+            addAnimations: function() {
+                var style = document.createElement('style');
+                style.type = 'text/css';
+                style.innerHTML = 'object,embed{\
+                -webkit-animation-duration:.001s;-webkit-animation-name:playerInserted;\
+                -ms-animation-duration:.001s;-ms-animation-name:playerInserted;\
+                -o-animation-duration:.001s;-o-animation-name:playerInserted;\
+                animation-duration:.001s;animation-name:playerInserted;}\
+                @-webkit-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}\
+                @-ms-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}\
+                @-o-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}\
+                @keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}';
+                document.getElementsByTagName('head')[0].appendChild(style);
+            },
+            animationsHandler: function(e) {
+                if(e.animationName === 'playerInserted') {
+                    this.replace(e.target);
+                }
+            },
+            replace: function(elem) {
+                if(this.done.indexOf(elem) != -1) return;
+                this.done.push(elem);
+                var player = elem.data || elem.src;
+                if(!player) return;
+                var i, find, replace = false;
+                for(i in this.rules) {
+                    find = this.rules[i]['find'];
+                    if(find.test(player)) {
+                        replace = this.rules[i]['replace'];
+                        if('function' === typeof this.rules[i]['preHandle']) {
+                            this.rules[i]['preHandle'].bind(this, elem, find, replace, player)();
+                        }else{
+                            this.reallyReplace.bind(this, elem, find, replace)();
+                        }
+                        break;
+                    }
+                }
+            },
+            reallyReplace: function(elem, find, replace) {
+                elem.data && (elem.data = elem.data.replace(find, replace)) || elem.src && ((elem.src = elem.src.replace(find, replace)) && (elem.style.display = 'block'));
+                var b = elem.querySelector("param[name='movie']");
+                this.reloadPlugin(elem);
+            },
+            reloadPlugin: function(elem) {
+                var nextSibling = elem.nextSibling;
+                var parentNode = elem.parentNode;
+                parentNode.removeChild(elem);
+                var newElem = elem.cloneNode(true);
+                this.done.push(newElem);
+                if(nextSibling) {
+                    parentNode.insertBefore(newElem, nextSibling);
+                } else {
+                    parentNode.appendChild(newElem);
+                }
+            },
+            init: function() {
+                var desc = navigator.mimeTypes['application/x-shockwave-flash'].description.toLowerCase();
+                /*if(desc.indexOf('adobe')>-1){
+                 delete this.rules["iqiyi_1"];
+                 delete this.rules["iqiyi_2"];
+                 }*/
+                if(document.URL.indexOf('tv.sohu.com')<=0){
+                    delete this.rules["sohu"];
+                }
+                var handler = this.animationsHandler.bind(this);
+                document.body.addEventListener('webkitAnimationStart', handler, false);
+                document.body.addEventListener('msAnimationStart', handler, false);
+                document.body.addEventListener('oAnimationStart', handler, false);
+                document.body.addEventListener('animationstart', handler, false);
+                this.addAnimations();
+            }
+        };
+        new A().init();
+    })();
+}
+// 20140730
+(function cnbeta() {
+    if (document.URL.indexOf('cnbeta.com') >= 0) {
+        var elms = document.body.querySelectorAll("p>embed");
+        Array.prototype.forEach.call(elms, function(elm) {
+            elm.style.marginLeft = "0px";
+        });
+    }
+})();
+//去百度推广广告
+if(document.URL.indexOf('www.baidu.com') >= 0){
+    if(document && document.getElementsByTagName && document.getElementById && document.body){
+        var a = function(){
+            Array.prototype.forEach.call(document.body.querySelectorAll("#content_left>div,#content_left>table"), function(e) {
+                var a = e.getAttribute("style");
+                if(a && /display:(table|block)\s!important/.test(a)){
+                    e.parentNode.removeChild(e)
+                }
+            });
+        };
+        a();
+        document.getElementById("su").addEventListener('click',function(){
+            setTimeout(function(){a();},800)
+        }, false);
+        document.getElementById("kw").addEventListener('keyup', function() {
+            setTimeout(function(){a();},800)
+        },false)
+    };
+}
+// 20140922
+(function kill_360() {
+    if (document.URL.indexOf('so.com') >= 0) {
+        document.getElementById("e_idea_pp").style.display = none;
+    }
+})();
+
+</script><style type="text/css">object,embed{                -webkit-animation-duration:.001s;-webkit-animation-name:playerInserted;                -ms-animation-duration:.001s;-ms-animation-name:playerInserted;                -o-animation-duration:.001s;-o-animation-name:playerInserted;                animation-duration:.001s;animation-name:playerInserted;}                @-webkit-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}                @-ms-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}                @-o-keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}                @keyframes playerInserted{from{opacity:0.99;}to{opacity:1;}}</style></head>
+  <body style="overflow: hidden; margin: 0px; padding: 0px; top: 0px; left: 0px; right: 0px; bottom: 0px; position: fixed; background: rgb(239, 239, 239);">
+    <div class="scripts">
+      <script>
+
+        $(function() {
+
+          var type = /(svg|webgl)/.test(url.type) ? url.type : 'canvas';
+          var two = new Two({
+            type: Two.Types[type],
+            fullscreen: true,
+            autostart: true
+          }).appendTo(document.body);
+
+          var characters = [];
+          var gravity = new Two.Vector(0, 0.66);
+
+          var styles = {
+            family: 'proxima-nova, sans-serif',
+            size: 50,
+            leading: 50,
+            weight: 900
+          };
+
+          var directions = two.makeText(has.mobile ? 'Tap Me' : 'Start Typing', two.width / 2, two.height / 2, styles);
+          directions.fill = 'white';
+
+          $(window)
+            .bind('keydown', function(e) {
+              var character = String.fromCharCode(e.which);
+              add(character);
+            })
+            .bind('touchstart', function() {
+              var r = Math.random();
+              var character = String.fromCharCode(Math.floor(r*26) + (r>0.5?97:65));
+              add(character);
+            });
+
+          two
+            .bind('resize', function() {
+              directions.translation.set(two.width / 2, two.height / 2);
+            })
+            .bind('update', function() {
+
+              for (var i = 0; i < characters.length; i++) {
+
+                var text = characters[i];
+                text.translation.addSelf(text.velocity);
+                text.rotation += text.velocity.r;
+
+                text.velocity.addSelf(gravity);
+                if (text.velocity.y > 0 && text.translation.y > two.height)  {
+                  two.scene.remove(text);
+                  characters.splice(i, 1);
+                }
+
+              }
+
+            });
+
+          function add(msg) {
+
+            var x = Math.random() * two.width / 2 + two.width / 4;
+            var y = two.height * 1.25;
+
+            var text = two.makeText(msg, x, y, styles);
+            text.size *= 2;
+            text.fill = '#333';
+
+            text.velocity = new Two.Vector();
+            text.velocity.x = 10 * (Math.random() - 0.5);
+            text.velocity.y = - (20 * Math.random() + 13);
+            text.velocity.r = Math.random() * Math.PI / 8;
+
+            characters.push(text);
+
+          }
+
+        });
+
+      </script>
+    </div>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-40550435-1', 'github.com');
+      ga('send', 'pageview');
+
+    </script>
+  
+<canvas width="1304" height="640" style="display: block; top: 0px; left: 0px; right: 0px; bottom: 0px; position: fixed; width: 1304px; height: 640px;"></canvas></body></html>
