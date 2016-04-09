@@ -2,6 +2,8 @@
 * {
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100%;
 }
 
 #myCanvas {
@@ -16,12 +18,6 @@
 <script type="text/javascript">
 var c=document.getElementById("myCanvas");
 var cxt = c.getContext("2d");
-
-var wid = window.innerWidth;
-var hei = window.innerHeight;
-
-c.width = wid;
-c.height = hei;
 
 cxt.fillStyle = "#FF0000";
 cxt.fillRect(0,0,150,75);
