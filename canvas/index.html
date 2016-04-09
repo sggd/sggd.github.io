@@ -6,6 +6,11 @@
   height: 100%;
 }
 
+body {
+  background: white;
+}
+
+
 #myCanvas {
   background: black;
 }
@@ -16,9 +21,12 @@
 </canvas>
 
 <script type="text/javascript">
-var c=document.getElementById("myCanvas");
-var cxt = c.getContext("2d");
+var can=document.getElementById("myCanvas");
+var cxt = can.getContext("2d");
+var canW = can.width;
+var canH = can.height;
+alert(canH+" "+ canH);
 
 cxt.fillStyle = "#FF0000";
-cxt.fillRect(0,0,150,75);
+cxt.fillRect(0,0,88,99);
 </script>
