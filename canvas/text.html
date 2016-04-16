@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Two.js: Dynamic Text</title>
+    <title>text</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <!--     <script src="./third-party/url.js"></script> -->
@@ -12,22 +12,40 @@
 <!-- 	<script type="text/javascript" src="./third-party/edp1hux.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}
 	</script> -->
+<style>
+@font-face {
+  font-family: "SentyZHAO";
+  src: url('./SentyZHAO.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Chekiang Sung";
+  
+  src: url('./ChekiangSung.ttf') format('truetype');
+  
+  font-style: normal;
+  font-weight: normal;
+}
+</style>
   </head>
   <body style="background: #efefef">
     <div class="scripts">
       <script>
-	  
-	  			  length=100;
-				  words='卿同学 你好 你知道 你有 多美丽么 \
-				  /\ _ /\ ';
-				  p=-1;
-				  function word(){
-				      var wordStart = p+1;
-					  while(words[++p]!=' ');
-					  if(p>=length)p=-1;
-					  return words.substring(wordStart,p);
+	              words ={
+	  			  length:16,
+				  words:'伏筆陌生 屢用不舊 太過認真 材瀆不透 ',
+				  p:-1,
+				  word:function(){
+				      if(this.p>=this.length)this.p=-1;
+				      var wordStart = this.p+1;
+					  while(this.words[++this.p]!=' ');
+					  console.log(this.p);
+					  return this.words.substring(wordStart,this.p);
+					  
 				  }
-	  
+	              }
+				  
         $(function() {
 
  //         var type = /(svg|webgl)/.test(url.type) ? url.type : 'canvas';
@@ -42,13 +60,13 @@
           var gravity = new Two.Vector(0, 0.55);
 
           var styles = {
-//            family: 'proxima-nova, sans-serif',
+            //family: 'Chekiang Sung',
             size: 50,
             leading: 50,
             weight: 900
           };
 
-          var directions = two.makeText(has.mobile ? 'Hello QML' : 'Hello QML', two.width / 2, two.height / 2, styles);
+          var directions = two.makeText(has.mobile ? 'Hello ' : 'Hello ', two.width / 2, two.height / 2, styles);
           directions.fill = 'white';
 
           $(window)
@@ -63,7 +81,18 @@
 
 			  
 			  
-			  var character = word();
+			  var character = words.word();
+			  //alert(character);
+              add(character);
+            })
+			.bind('click', function() {
+              //var r = Math.random();
+              //var character = String.fromCharCode(Math.floor(r*26) + (r>0.5?97:65)); 
+			 
+
+			  
+			  
+			  var character = words.word();
 			  //alert(character);
               add(character);
             });

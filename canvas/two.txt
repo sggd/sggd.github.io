@@ -1,0 +1,15 @@
+two.js:
+
+命令行输出：console.log(this.p)
+
+$号是JQuery的快捷方式。当调用$（somthing）时，相当于是在调用jQuery(something).
+$(function(){}) 是$(document).ready() 的简写 
+onload需要页面上所有的资源都加载上之后执行，而ready则是DOM文档树已经解析完成时，
+比如一个页面上有一个很大的图片，加载要好久，onload只有在图片加载完成之后执行，而ready不必等图片加载完成。
+$(function(){alert("hello");})立刻提示hello
+
+jQuery里的用途是给元素绑定事件
+$("#scroll").bind("click", function() {});
+
+Math.random():返回0到1的小数
+
