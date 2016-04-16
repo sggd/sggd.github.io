@@ -22,14 +22,23 @@
   font-style: normal;
   font-weight: normal;
 }
+@font-face {
+  font-family: "SentyZHAO";
+  
+  src: url('./SentyZHAO.ttf') format('truetype');
+  
+  font-style: normal;
+  font-weight: normal;
+}
 </style>
   </head>
   <body style="background: #efefef">
+
     <div class="scripts">
       <script>
 	              words ={
-	  			  length:16,
-				  words:'伏筆陌生 屢用不舊 太過認真 材瀆不透 ',
+	  			  length:35,
+				  words:'小傻瓜 笨蛋 卿同学 在一起 信心 one_mouth_ed 和屯夫人 ',
 				  p:-1,
 				  word:function(){
 				      if(this.p>=this.length)this.p=-1;
@@ -40,41 +49,86 @@
 					  
 				  }
 	              };
-				  
-        $(function() {
-
- //         var type = /(svg|webgl)/.test(url.type) ? url.type : 'canvas';
-          var type = 'canvas';
+				            var type = 'canvas';
           var two = new Two({
             type: Two.Types[type],
             fullscreen: true,
             autostart: true
           }).appendTo(document.body);
+				  bgWords ={
+	  			  length:69,
+				  height:5,
+				  width:17,
+				  words:'Lovennnn傍晚把情話的顏色塗在單車上nn停在寢室的棕櫚旁nn我的心是三月四月nn似明早的熱幹面懶得拌nnnFrom LHnTo QML   ',
+				  p:-1,
+				  word:function(i){
+					  return this.words[i];
+				  }
+	              };
+				  
+          var styles = {
+            family: 'Chekiang Sung',
+            size: two.width>two.height?two.height/20:two.width/20,
+            leading: 50,
+            weight: 900
+          };
+		            var stylesA = {
+            family: 'SentyZHAO',
+            size: two.width>two.height?two.height/20:two.width/20,
+            leading: 50,
+            weight: 900
+          };
+		            var stylesTop = {
+            size: two.width/10,
+            leading: 50,
+            weight: 900
+          };
+		  time=-1;
+		  				  		  function thebgword(){
+time++;
+var word = bgWords.word(time);
+if(word=='n'){
+    bgWords.width--;
+	bgWords.height = 5;
+}
+
+else if(time<bgWords.length){
+var directions=two.makeText(word, two.width / 20*bgWords.width, two.height/20*(bgWords.height++), styles);
+directions.fill = 'white';
+}
+t=setTimeout('thebgword()',Math.random()*1000);
+}
+
+
+        $(function() {
+
+ //         var type = /(svg|webgl)/.test(url.type) ? url.type : 'canvas';
+
 
           var characters = [];
           var gravity = new Two.Vector(0, 0.55);
 
-          var styles = {
-            family: 'Chekiang Sung',
-            size: 50,
-            leading: 50,
-            weight: 900
-          };
+          
+		  
 
-          var directions = two.makeText(has.mobile ? 'Hello ' : 'Hello ', two.width / 2, two.height / 2, styles);
+          thebgword();
+          
+          var directions = two.makeText('=================', two.width / 2, two.height / 10, stylesTop);
           directions.fill = 'white';
-
+          var directions = two.makeText('=================', two.width / 2, two.height / 10*9, stylesTop);
+          directions.fill = 'white';
+		 
           $(window)
             .bind('keydown', function(e) {
               var character = String.fromCharCode(e.which);
               add(character);
             })
-            .bind('touchstart', function() {
+            .bind('touchstart', function(e) {
               //var r = Math.random();
               //var character = String.fromCharCode(Math.floor(r*26) + (r>0.5?97:65)); 
 			 
-
-			  
+              
+			  ee=e;
 			  
 			  var character = words.word();
 			  //alert(character);
@@ -83,10 +137,6 @@
 			.bind('click', function() {
               //var r = Math.random();
               //var character = String.fromCharCode(Math.floor(r*26) + (r>0.5?97:65)); 
-			 
-
-			  
-			  
 			  var character = words.word();
 			  //alert(character);
               add(character);
@@ -119,7 +169,7 @@
             var x = Math.random() * two.width / 2 + two.width / 4;
             var y = two.height * 1.25;
 
-            var text = two.makeText(msg, x, y, styles);
+            var text = two.makeText(msg, x, y, stylesA);
             text.size *= 2;
             text.fill = '#333';
 
@@ -132,8 +182,8 @@
 
           }
 
-        });
 
+        });
       </script>
     </div>
 <!--     <script>
