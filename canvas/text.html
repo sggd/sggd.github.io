@@ -10,13 +10,27 @@
     <!-- <script src='./third-party/has.js'></script> -->
   </head>
   <body style="background: #50d3c3">
-
+<embed src="./ValderFields.mp3" hidden="true" autostart="true" loop="true"> 
     <div class="scripts">
       <script>
 time=-1;
 	              words ={
 	  			  length:57,
 				  words:'小傻瓜 笨蛋 卿同学 在一起 信心 one_mouth_ed 和屯夫人 温柔可爱 善良美丽 。。。。漂亮 不。。。。     ',
+				  p:-1,
+				  word:function(){
+				      if(this.p>=this.length)this.p=-1;
+				      var wordStart = this.p+1;
+					  while(this.words[++this.p]!=' ');
+					  console.log(this.p);
+					  return this.words.substring(wordStart,this.p);
+					  
+				  }
+	              };
+				  
+				  wordN ={
+	  			  length:76,
+				  words:'Love 当我想起你 一个月了 想长肉肉 加油 法学姑娘最可爱 QML&LH 武汉 长沙 ~感谢~ 早睡早起 司考必胜 樱花和你 求调戏 懒猫起床啦   ',
 				  p:-1,
 				  word:function(){
 				      if(this.p>=this.length)this.p=-1;
@@ -66,8 +80,8 @@ time=-1;
             weight: 900
           };
 		  
-var circle = two.makeCircle(-two.width/18, 0, two.width/20);
-var rect = two.makeRectangle(two.width/18, 0, two.width/10, two.width/10);
+ circle = two.makeCircle(-two.width/18, 0, two.width/20);
+ rect = two.makeRectangle(two.width/18, 0, two.width/10, two.width/10);
 circle.fill = '#FF8000';
 rect.fill = 'rgba(0, 200, 255, 0.75)';
 
@@ -75,7 +89,7 @@ rect.fill = 'rgba(0, 200, 255, 0.75)';
 group.translation.set(two.width / 2, two.height / 10*8.5);
 group.scale = 0;
 group.noStroke();			  		  
-
+touchTime = -1;
 
         $(function() {
 
@@ -95,12 +109,174 @@ group.noStroke();
               add(character);
             })
             .bind('touchstart', function(e) {
+			  if(touchTime>=0){
               //var r = Math.random();
               //var character = String.fromCharCode(Math.floor(r*26) + (r>0.5?97:65)); 
+			  if(touchTime<16){
+			  touchTime++;
 			  var character = words.word();
 			  //alert(character);
               add(character);
+              }
+			  else if(touchTime==16){
+			  			  touchTime++;
+			  two.clear();
+			  }else{
+			  ////////////////////////////////////
 
+			            var colors = [
+            'rgb(0, 191, 168)',
+            'rgb(153, 102, 255)',
+            'rgb(255, 100, 100)',
+            'rgb(0, 200, 255)'
+          ];
+
+          var background = two.makeRectangle(two.width / 2, two.height / 2, two.width, two.height);
+          background.noStroke();
+          background.fill = 'rgb(255, 255, 175)';
+          background.name = 'background';
+
+          var container = two.makeGroup(background);
+
+          var rows = Math.floor(two.height / 100);
+          var cols = Math.floor(two.width / 100);
+          var width = Math.round(two.height / Math.max(rows, cols));
+
+          for (var i = 0; i < rows; i++) {
+
+            var even = !!(i % 2);
+            var vi = i / (rows - 1);
+
+            for (var j = 0; j < cols; j++) {
+
+              var k = j;
+
+              if (even) {
+                k += 0.5;
+                if (j >=  cols - 1) {
+                  continue;
+                }
+              }
+
+              var hi = k / (cols - 1);
+
+              var type = !!(j % 2) ? 'Squiggle' : 'Nonagon';
+              var height = !!(j % 2) ? width / 3 : width;
+              var shape = two['make' + type](width, height, Math.floor(Math.random() * 3) + 3);
+              var color = colors[Math.floor(Math.random() * colors.length)];
+              
+              shape.rotation = Math.floor(Math.random() * 4) * Math.PI / 2 + Math.PI / 4;
+              shape.translation.set(hi * two.width, vi * two.height);
+
+              if (j % 2) {
+                shape.noFill();
+                shape.stroke = color;
+                shape.linewidth = 4;
+                shape.cap = 'round';
+              } else {
+                shape.noStroke();
+                shape.fill = color;
+              }
+
+              shape.step = (Math.floor(Math.random() * 8) / 8) * Math.PI / 60;
+              shape.step *= Math.random() > 0.5 ? - 1 : 1;
+
+              container.add(shape);
+////////////////////////
+			 var loveTxt= two.makeText(wordN.word(), width, height,stylesA);
+              var color = colors[Math.floor(Math.random() * colors.length)];
+              
+              loveTxt.rotation = Math.floor(Math.random() * 4) * Math.PI / 2 + Math.PI / 4;
+              loveTxt.translation.set(hi * two.width, vi * two.height);
+
+              if (j % 2) {
+                loveTxt.noFill();
+                loveTxt.stroke = color;
+                loveTxt.linewidth = 1;
+                loveTxt.cap = 'round';
+              } else {
+                loveTxt.noStroke();
+                loveTxt.fill = color;
+              }
+
+              loveTxt.step = (Math.floor(Math.random() * 8) / 8) * Math.PI / 60;
+              loveTxt.step *= Math.random() > 0.5 ? - 1 : 1;
+
+              container.add(loveTxt);
+/////////////////////////
+			  
+			  
+			  
+			  
+			  
+			  
+            }
+
+          }
+
+          var cursor = two.makeCircle(0, 0, Math.min(two.height, two.width) / 3);
+          cursor.outline = two.makeCircle(0, 0, Math.min(two.height, two.width) / 3);
+          cursor.target = new Two.Vector();
+
+          cursor.outline.noFill();
+          cursor.outline.stroke = 'rgba(0, 100, 255, 0.1)';
+          cursor.outline.linewidth = 40;
+
+          container.mask = cursor;
+          cursor.target.set(two.width / 2, two.height / 2);
+          cursor.translation.copy(cursor.target);
+
+          var center = _.debounce(function() {
+            cursor.target.set(two.width / 2, two.height / 2);
+          }, 1000);
+
+          var drag = function(e) {
+            cursor.target.set(e.clientX, e.clientY);
+            center();
+          };
+
+          var touchDrag = function(e) {
+            e.preventDefault();
+            var touch = e.originalEvent.changedTouches[0];
+            drag({
+              clientX: touch.pageX,
+              clientY: touch.pageY
+            });
+            return false;
+          };
+
+          $(window)
+            .bind('mousemove', drag)
+            .bind('touchmove', touchDrag);
+
+          two.bind('update', function() {
+
+            cursor.translation.x += (cursor.target.x - cursor.translation.x) * 0.125;
+            cursor.translation.y += (cursor.target.y - cursor.translation.y) * 0.125;
+            cursor.outline.translation.copy(cursor.translation);
+
+            for (var k in container.children) {
+              var child = container.children[k];
+              if (child.name === 'background') {
+                continue;
+              }
+              child.rotation += child.step;
+            }
+
+          });
+			  
+			  
+			  
+			  
+			  
+		        
+		///////////////////////////////////////	  
+			  
+			  
+			  
+			  
+			  }
+			  }
             });
 
 			
@@ -156,13 +332,48 @@ group.noStroke();
 
 
         });
+		
+		Two.prototype.makeSquiggle = function(width, height, phi) {
+
+          var amt = 64;
+
+          var squiggle = this.makeCurve(
+            _.map(_.range(amt), function(i) {
+              var pct = i / (amt - 1);
+              var theta = pct * Math.PI * 2 * phi + Math.PI / 2;
+              var x = width * pct - width / 2;
+              var y = height / 2 * Math.sin(theta);
+              return new Two.Anchor(x, y);
+            }),
+            true
+          );
+
+          return squiggle;
+
+        };
+
+        Two.prototype.makeNonagon = function(width, height, sides) {
+
+          width /= 2;
+          height /= 2;
+
+          var shape = this.makePath(
+            _.map(_.range(sides), function(i) {
+              var pct = i / sides;
+              var theta = Math.PI * 2 * pct - Math.PI / 2;
+              var x = width * Math.cos(theta);
+              var y = height * Math.sin(theta);
+              return new Two.Anchor(x, y);
+            })
+          );
+
+          return shape;
+
+        }	  
 
 	  		  function thebgword(){
   time++;
   var word = bgWords.word(time);
-  
-
-  
   
   if(word=='n'){
     bgWords.width--;
@@ -176,8 +387,12 @@ group.noStroke();
     var directions=two.makeText(word, two.width / 20*bgWords.width, two.height/20*(bgWords.height++), styles);
     directions.fill = '#ffd5ab';
 
-	setTimeout('thebgword()',Math.random()*1000);
-    }
+	setTimeout('thebgword()',Math.random()*500);
+    }else if(time>=bgWords.length){
+	touchTime=0;
+circle.fill = 'rgb(0, 191, 168)';
+rect.fill = 'rgb(255, 100, 100)';
+	}
    
 };
 

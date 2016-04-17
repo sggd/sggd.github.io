@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+  <head>
+    <title>-武汉*遇见*长沙-</title>
+    <meta charset="utf-8">
+	<link rel="icon" href="./favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <script src="./third-party/jquery.min.js"></script>
+    <script src="./third-party/two.js"></script>
+    <!-- <script src='./third-party/has.js'></script> -->
+  </head>
+  <body style="background: #50d3c3">
+
+    <div class="scripts">
+      <script>
+time=-1;
+	              words ={
+	  			  length:57,
+				  words:'小傻瓜 笨蛋 卿同学 在一起 信心 one_mouth_ed 和屯夫人 温柔可爱 善良美丽 。。。。漂亮 不。。。。     ',
+				  p:-1,
+				  word:function(){
+				      if(this.p>=this.length)this.p=-1;
+				      var wordStart = this.p+1;
+					  while(this.words[++this.p]!=' ');
+					  console.log(this.p);
+					  return this.words.substring(wordStart,this.p);
+					  
+				  }
+	              };
+				  
+				 bgWords ={
+	  			  length:77,
+				  
+				  height:5,
+				  width:17,
+				  words:'Lovennnn傍晚把情話的顏色塗在單車上nn停在寢室的棕櫚旁nn我的心是三月四月nn似明早的熱幹面懶得拌nnnFrom LHnTo  QMRnnnn   ',
+				  p:-1,
+				  word:function(i){
+					  return this.words[i];
+				  }
+	              }; 
+				  
+		   type = 'canvas';
+           two = new Two({
+            type: Two.Types[type],
+            fullscreen: true,
+            autostart: true
+          }).appendTo(document.body);
+
+				  
+           styles = {
+            size: two.width>two.height?two.height/20:two.width/20,
+            leading: 50,
+            weight: 900
+          };
+		  
+		   stylesA = {
+            size: two.width>two.height?two.height/20:two.width/20,
+            leading: 50,
+            weight: 900
+          };
+		  
+		  stylesTop = {
+            size: two.width/10,
+            leading: 50,
+            weight: 900
+          };
+		  
+var circle = two.makeCircle(-two.width/18, 0, two.width/20);
+var rect = two.makeRectangle(two.width/18, 0, two.width/10, two.width/10);
+circle.fill = '#FF8000';
+rect.fill = 'rgba(0, 200, 255, 0.75)';
+
+ group = two.makeGroup(circle, rect);
+group.translation.set(two.width / 2, two.height / 10*8.5);
+group.scale = 0;
+group.noStroke();			  		  
+
+
+        $(function() {
+
+
+ //         var type = /(svg|webgl)/.test(url.type) ? url.type : 'canvas';
+
+
+          var characters = [];
+          var gravity = new Two.Vector(0, 0.55);
+          var directions = two.makeText('=================', two.width / 2, two.height / 10, stylesTop);
+          directions.fill = 'white';
+          var directions = two.makeText('=================', two.width / 2, two.height / 10*9, stylesTop);
+          directions.fill = 'white';
+          $(window)
+            .bind('keydown', function(e) {
+              var character = String.fromCharCode(e.which);
+              add(character);
+            })
+            .bind('touchstart', function(e) {
+              //var r = Math.random();
+              //var character = String.fromCharCode(Math.floor(r*26) + (r>0.5?97:65)); 
+			  var character = words.word();
+			  //alert(character);
+              add(character);
+
+            });
+
+			
+
+
+          two
+            .bind('resize', function() {
+              directions.translation.set(two.width / 2, two.height / 2);
+            })
+            .bind('update', function() {
+
+              for (var i = 0; i < characters.length; i++) {
+
+                var text = characters[i];
+                text.translation.addSelf(text.velocity);
+                text.rotation += text.velocity.r;
+
+                text.velocity.addSelf(gravity);
+                if (text.velocity.y > 0 && text.translation.y > two.height)  {
+                  two.scene.remove(text);
+                  characters.splice(i, 1);
+                }
+
+              }
+			    				    if (group.scale > 0.9999) {
+    group.scale = group.rotation = 0;
+  }
+  var t = (1 - group.scale) * 0.125;
+  group.scale += t;
+  group.rotation += t * 4 * Math.PI;
+
+
+            });
+
+          function add(msg) {
+
+            var x = Math.random() * two.width / 2 + two.width / 4;
+            var y = two.height * 1.25;
+
+            var text = two.makeText(msg, x, y, stylesA);
+            text.size *= 2;
+            text.fill = '#333';
+
+            text.velocity = new Two.Vector();
+            text.velocity.x = 10 * (Math.random() - 0.5);
+            text.velocity.y = - (20 * Math.random() + 13);
+            text.velocity.r = Math.random() * Math.PI / 8;
+            characters.push(text);
+
+          };
+		  
+
+
+
+        });
+
+	  		  function thebgword(){
+  time++;
+  var word = bgWords.word(time);
+  
+
+  
+  
+  if(word=='n'){
+    bgWords.width--;
+	bgWords.height = 5;
+	
+	setTimeout('thebgword()',Math.random()*1000);
+  
+  }
+
+  else if(time<bgWords.length){
+    var directions=two.makeText(word, two.width / 20*bgWords.width, two.height/20*(bgWords.height++), styles);
+    directions.fill = '#ffd5ab';
+
+	setTimeout('thebgword()',Math.random()*1000);
+    }
+   
+};
+
+
+
+thebgword();
+	  </script>
+    </div>
+
+  </body>
+</html>
