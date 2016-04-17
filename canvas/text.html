@@ -29,11 +29,11 @@ time=-1;
 	              };
 				  
 				 bgWords ={
-	  			  length:73,
+	  			  length:77,
 				  
 				  height:5,
 				  width:17,
-				  words:'Lovennnn傍晚把情話的顏色塗在單車上nn停在寢室的棕櫚旁nn我的心是三月四月nn似明早的熱幹面懶得拌nnnFrom LHnTo  QMR   ',
+				  words:'Lovennnn傍晚把情話的顏色塗在單車上nn停在寢室的棕櫚旁nn我的心是三月四月nn似明早的熱幹面懶得拌nnnFrom LHnTo  QMRnnnn   ',
 				  p:-1,
 				  word:function(i){
 					  return this.words[i];
@@ -66,7 +66,15 @@ time=-1;
             weight: 900
           };
 		  
-		  				  		  
+var circle = two.makeCircle(-two.width/18, 0, two.width/20);
+var rect = two.makeRectangle(two.width/18, 0, two.width/10, two.width/10);
+circle.fill = '#FF8000';
+rect.fill = 'rgba(0, 200, 255, 0.75)';
+
+ group = two.makeGroup(circle, rect);
+group.translation.set(two.width / 2, two.height / 10*8.5);
+group.scale = 0;
+group.noStroke();			  		  
 
 
         $(function() {
@@ -92,7 +100,10 @@ time=-1;
 			  var character = words.word();
 			  //alert(character);
               add(character);
+
             });
+
+			
 
 
           two
@@ -114,6 +125,13 @@ time=-1;
                 }
 
               }
+			    				    if (group.scale > 0.9999) {
+    group.scale = group.rotation = 0;
+  }
+  var t = (1 - group.scale) * 0.125;
+  group.scale += t;
+  group.rotation += t * 4 * Math.PI;
+
 
             });
 
@@ -138,25 +156,34 @@ time=-1;
 
 
         });
-      </script>
-	  <script>
+
 	  		  function thebgword(){
   time++;
   var word = bgWords.word(time);
+  
+
+  
+  
   if(word=='n'){
     bgWords.width--;
 	bgWords.height = 5;
+	
 	setTimeout('thebgword()',Math.random()*1000);
+  
   }
 
   else if(time<bgWords.length){
     var directions=two.makeText(word, two.width / 20*bgWords.width, two.height/20*(bgWords.height++), styles);
     directions.fill = '#ffd5ab';
+
 	setTimeout('thebgword()',Math.random()*1000);
     }
    
 };
-thebgword()
+
+
+
+thebgword();
 	  </script>
     </div>
 
