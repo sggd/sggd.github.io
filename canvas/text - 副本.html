@@ -35,6 +35,21 @@
 
     <div class="scripts">
       <script>
+function thebgword(){
+  time++;
+  var word = bgWords.word(time);
+  if(word=='n'){
+    bgWords.width--;
+	bgWords.height = 5;
+  }
+
+  else if(time<bgWords.length){
+    var directions=two.makeText(word, two.width / 20*bgWords.width, two.height/20*(bgWords.height++), styles);
+    directions.fill = '#ffd5ab';
+    }
+    t=setTimeout('thebgword()',Math.random()*1000);
+}
+        $(function() {
 	              words ={
 	  			  length:35,
 				  words:'小傻瓜 笨蛋 卿同学 在一起 信心 one_mouth_ed 和屯夫人 ',
@@ -61,52 +76,37 @@
 				  }
 	              }; 
 				  
-		  var type = 'canvas';
-          var two = new Two({
+		   type = 'canvas';
+           two = new Two({
             type: Two.Types[type],
             fullscreen: true,
             autostart: true
           }).appendTo(document.body);
 
 				  
-          var styles = {
+           styles = {
             family: 'Chekiang Sung',
             size: two.width>two.height?two.height/20:two.width/20,
             leading: 50,
             weight: 900
           };
 		  
-		  var stylesA = {
+		   stylesA = {
             family: 'SentyZHAO',
             size: two.width>two.height?two.height/20:two.width/20,
             leading: 50,
             weight: 900
           };
 		  
-		  var stylesTop = {
+		  stylesTop = {
             size: two.width/10,
             leading: 50,
             weight: 900
           };
 		  time=-1;
 		  				  		  
-function thebgword(){
-  time++;
-  var word = bgWords.word(time);
-  if(word=='n'){
-    bgWords.width--;
-	bgWords.height = 5;
-  }
-
-  else if(time<bgWords.length){
-    var directions=two.makeText(word, two.width / 20*bgWords.width, two.height/20*(bgWords.height++), styles);
-    directions.fill = '#ffd5ab';
-    }
-    t=setTimeout('thebgword()',Math.random()*1000);
-}
 
 
-        $(function() {
 
  //         var type = /(svg|webgl)/.test(url.type) ? url.type : 'canvas';
 
