@@ -10,8 +10,7 @@
     <!-- <script src='./third-party/has.js'></script> -->
   </head>
   <body style="background: #50d3c3">
-
-<audio autoplay="autoplay"  data-ke-src='./ValderFields.mp3' height="0" width="0">
+<audio src="./ValderFields.mp3" autoplay="autoplay"loop="loop"></audio >
 </audio>
     <div class="scripts">
       <script>
@@ -237,7 +236,7 @@ touchTime = -1;
 
             cursor.translation.x += (cursor.target.x - cursor.translation.x) * 0.125;
             cursor.translation.y += (cursor.target.y - cursor.translation.y) * 0.125;
-            cursor.outline.translation.copy(cursor.translation);
+            //cursor.outline.translation.copy(cursor.translation);
 
             for (var k in container.children) {
               var child = container.children[k];
