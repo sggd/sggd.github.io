@@ -1,24 +1,13 @@
 <!doctype html>
 <html>
   <head>
-    <title>--武汉遇见长沙--</title>
+    <title>-武汉*遇见*长沙-</title>
     <meta charset="utf-8">
+	<link rel="icon" href="./favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-
-    <script src="./third-party/jquery.js"></script>
+    <script src="./third-party/jquery.min.js"></script>
     <script src="./third-party/two.js"></script>
-    <script src='./third-party/has.js'></script>
-<style>
-@font-face {
-  font-family: "SentyZHAO";
-  
-  src: url('./SentyZHAO.ttf') format('truetype');
-  
-  font-style: normal;
-  font-weight: normal;
-}
-
-</style>
+    <!-- <script src='./third-party/has.js'></script> -->
   </head>
   <body style="background: #50d3c3">
 
@@ -26,8 +15,8 @@
       <script>
 time=-1;
 	              words ={
-	  			  length:35,
-				  words:'小傻瓜 笨蛋 卿同学 在一起 信心 one_mouth_ed 和屯夫人 ',
+	  			  length:57,
+				  words:'小傻瓜 笨蛋 卿同学 在一起 信心 one_mouth_ed 和屯夫人 温柔可爱 善良美丽 。。。。漂亮 不。。。。     ',
 				  p:-1,
 				  word:function(){
 				      if(this.p>=this.length)this.p=-1;
@@ -66,7 +55,6 @@ time=-1;
           };
 		  
 		   stylesA = {
-            family: 'SentyZHAO',
             size: two.width>two.height?two.height/20:two.width/20,
             leading: 50,
             weight: 900
@@ -89,17 +77,10 @@ time=-1;
 
           var characters = [];
           var gravity = new Two.Vector(0, 0.55);
-
-          
-		  
-
-          
-          
           var directions = two.makeText('=================', two.width / 2, two.height / 10, stylesTop);
           directions.fill = 'white';
           var directions = two.makeText('=================', two.width / 2, two.height / 10*9, stylesTop);
           directions.fill = 'white';
-		 
           $(window)
             .bind('keydown', function(e) {
               var character = String.fromCharCode(e.which);
@@ -108,8 +89,6 @@ time=-1;
             .bind('touchstart', function(e) {
               //var r = Math.random();
               //var character = String.fromCharCode(Math.floor(r*26) + (r>0.5?97:65)); 
-			 
-			  
 			  var character = words.word();
 			  //alert(character);
               add(character);
