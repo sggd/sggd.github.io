@@ -28,9 +28,10 @@
   font-style: normal;
   font-weight: normal;
 }
+
 </style>
   </head>
-  <body style="background: #efefef">
+  <body style="background: #50d3c3">
 
     <div class="scripts">
       <script>
@@ -47,13 +48,8 @@
 					  
 				  }
 	              };
-				            var type = 'canvas';
-          var two = new Two({
-            type: Two.Types[type],
-            fullscreen: true,
-            autostart: true
-          }).appendTo(document.body);
-				  bgWords ={
+				  
+				 bgWords ={
 	  			  length:73,
 				  
 				  height:5,
@@ -63,7 +59,15 @@
 				  word:function(i){
 					  return this.words[i];
 				  }
-	              };
+	              }; 
+				  
+		  var type = 'canvas';
+          var two = new Two({
+            type: Two.Types[type],
+            fullscreen: true,
+            autostart: true
+          }).appendTo(document.body);
+
 				  
           var styles = {
             family: 'Chekiang Sung',
@@ -71,31 +75,34 @@
             leading: 50,
             weight: 900
           };
-		            var stylesA = {
+		  
+		  var stylesA = {
             family: 'SentyZHAO',
             size: two.width>two.height?two.height/20:two.width/20,
             leading: 50,
             weight: 900
           };
-		            var stylesTop = {
+		  
+		  var stylesTop = {
             size: two.width/10,
             leading: 50,
             weight: 900
           };
 		  time=-1;
-		  				  		  function thebgword(){
-time++;
-var word = bgWords.word(time);
-if(word=='n'){
+		  				  		  
+function thebgword(){
+  time++;
+  var word = bgWords.word(time);
+  if(word=='n'){
     bgWords.width--;
 	bgWords.height = 5;
-}
+  }
 
-else if(time<bgWords.length){
-var directions=two.makeText(word, two.width / 20*bgWords.width, two.height/20*(bgWords.height++), styles);
-directions.fill = '#ffd5ab';
-}
-t=setTimeout('thebgword()',Math.random()*1000);
+  else if(time<bgWords.length){
+    var directions=two.makeText(word, two.width / 20*bgWords.width, two.height/20*(bgWords.height++), styles);
+    directions.fill = '#ffd5ab';
+    }
+    t=setTimeout('thebgword()',Math.random()*1000);
 }
 
 
@@ -113,9 +120,9 @@ t=setTimeout('thebgword()',Math.random()*1000);
           
           
           var directions = two.makeText('=================', two.width / 2, two.height / 10, stylesTop);
-          directions.fill = '#50d3c3';
+          directions.fill = 'white';
           var directions = two.makeText('=================', two.width / 2, two.height / 10*9, stylesTop);
-          directions.fill = '#50d3c3';
+          directions.fill = 'white';
 		 
           $(window)
             .bind('keydown', function(e) {
@@ -126,16 +133,7 @@ t=setTimeout('thebgword()',Math.random()*1000);
               //var r = Math.random();
               //var character = String.fromCharCode(Math.floor(r*26) + (r>0.5?97:65)); 
 			 
-              
-			  ee=e;
 			  
-			  var character = words.word();
-			  //alert(character);
-              add(character);
-            })
-			.bind('click', function() {
-              //var r = Math.random();
-              //var character = String.fromCharCode(Math.floor(r*26) + (r>0.5?97:65)); 
 			  var character = words.word();
 			  //alert(character);
               add(character);
