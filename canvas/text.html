@@ -10,7 +10,11 @@
     <!-- <script src='./third-party/has.js'></script> -->
   </head>
   <body style="background: #50d3c3">
-<embed src="./ValderFields.mp3" hidden="true" autostart="true" loop="true"> 
+
+<audio autoplay="autoplay" hidden="true" height="0" width="0">
+  <source src="./ValderFields.mp3" type="audio/mp3" />
+  <embed height="100" width="100" src="./ValderFields.mp3.mp3" />
+</audio>
     <div class="scripts">
       <script>
 time=-1;
@@ -43,7 +47,7 @@ time=-1;
 	              };
 				  
 				 bgWords ={
-	  			  length:77,
+	  			  length:75,
 				  
 				  height:5,
 				  width:17,
@@ -162,28 +166,9 @@ touchTime = -1;
 
               var type = !!(j % 2) ? 'Squiggle' : 'Nonagon';
               var height = !!(j % 2) ? width / 3 : width;
-              var shape = two['make' + type](width, height, Math.floor(Math.random() * 3) + 3);
-              var color = colors[Math.floor(Math.random() * colors.length)];
-              
-              shape.rotation = Math.floor(Math.random() * 4) * Math.PI / 2 + Math.PI / 4;
-              shape.translation.set(hi * two.width, vi * two.height);
 
-              if (j % 2) {
-                shape.noFill();
-                shape.stroke = color;
-                shape.linewidth = 4;
-                shape.cap = 'round';
-              } else {
-                shape.noStroke();
-                shape.fill = color;
-              }
-
-              shape.step = (Math.floor(Math.random() * 8) / 8) * Math.PI / 60;
-              shape.step *= Math.random() > 0.5 ? - 1 : 1;
-
-              container.add(shape);
 ////////////////////////
-			 var loveTxt= two.makeText(wordN.word(), width, height,stylesA);
+			 var loveTxt= two.makeText(wordN.word(), width, height,stylesTop);
               var color = colors[Math.floor(Math.random() * colors.length)];
               
               loveTxt.rotation = Math.floor(Math.random() * 4) * Math.PI / 2 + Math.PI / 4;
@@ -247,6 +232,7 @@ touchTime = -1;
 
           $(window)
             .bind('mousemove', drag)
+			.bind('touchstart',touchDrag)
             .bind('touchmove', touchDrag);
 
           two.bind('update', function() {
