@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+	<title>
+       Naive implementation of animation in Canvas.
+	</title>  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" 
+        src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js">
+    </script>
+    <script>
+        $(document).ready(function() {
+            var a_canvas = $("#a_canvas")[0];
+            var ctx = a_canvas.getContext("2d");
+            for(var p=0;p<450;p++) {
+			ctx.fillStyle = "rgb(0,0,255)";
+			// Draw a rectangle
+            ctx.fillRect(p, p, 50, 50);
+			}
+        });
+    </script>
+</head>
+<body>
+	
+    <canvas id="a_canvas" width=500 height = 500>
+    </canvas>
+</body>
+</html>

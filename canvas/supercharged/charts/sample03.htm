@@ -1,0 +1,40 @@
+<html>
+    
+    <head>
+        <script type="text/javascript">
+            setInterval(function() {
+                // Create a random value between 0-100
+                var value = Math.floor(Math.random() * 100);
+                // Create the URL with random value for the data
+                // and 100 - value specified as the label for the arrow. 
+                var URL = 'https://chart.googleapis.com/chart?' +
+                          'cht=gom&' +            // Specify Google-O-Meter chart.
+                          'chtt=Rate-a-Coder&' +  // The chart title.
+                          'chts=000000,18&' +     // Title size and color
+                          'chs=500x250&' +        // Chart size.
+                          // Show both x axis (arrow) and y axis (values) labels.
+                          'chxt=x,y&' +
+                           // Label for arrow (data set 0),
+                           // and labels for values (data set 1).
+                          'chxl=0:|' + (100 - value) + '|1:|Good|Bad|Ugly&' +
+                          // Color and size of label text.
+                          'chxs=0,000000,14,0,t|1,000000,14,0,t&' +
+                          // Color range of chart, red-yellow-green.     
+                          'chco=00FF00,FFFF00,FF0000&' +                         
+                          // Finally, set the actual value for the arrow.
+                          'chd=t:' + value;     
+
+                // Locate the image element in the DOM and set its src attribute.
+                var image = document.getElementById('chart');
+                image.setAttribute('src', URL);
+            }, 1000);
+        </script>
+    </head>
+    
+    <body>
+        <!-- The image source will be changed once every secibd. -->
+        <img id="chart">
+        </div>
+    </body>
+
+</html>

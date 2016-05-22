@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>    
+    <head>
+       
+        <script type="text/javascript"
+            src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js">
+        </script>
+		<script type="text/javascript">
+			 $(function() {
+					var canvas = document.getElementById('mycanvas');
+					var ctx = canvas.getContext('2d');
+
+// Draw one filled and ones stroked triangle.                    
+var draw = function(ctx) {
+	
+	// Draw a filled triangle, top-left.
+	ctx.beginPath();  
+	ctx.moveTo(20,20);  
+	ctx.lineTo(470,20);  
+	ctx.lineTo(20,470);  
+	ctx.fill();
+	
+	// Draw a stroked triangle, bottom-right right.
+	ctx.beginPath();  
+	ctx.moveTo(480,30);  
+	ctx.lineTo(480,480);  
+	ctx.lineTo(30,480);  
+	ctx.closePath();
+	ctx.stroke();
+};
+			
+		
+        draw(ctx);
+        			
+            });
+        </script>
+		<style type="text/css">
+			#mycanvas  {border:1px solid;position:absolute;top:0px;}
+		</style>
+    </head>
+ 
+    <body style="position:relative;">
+    	
+        <canvas  id="mycanvas" width = 500, height = 500>
+       
+        </canvas>
+       
+    </body>
+</html>
+<script>
+
+
+					
+				
+					
+</script>

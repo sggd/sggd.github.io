@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>    
+    <head>
+       
+        <script type="text/javascript"
+            src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js">
+        </script>
+		<script type="text/javascript"
+			src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script> 
+        <script type="text/javascript">
+  
+			 $(function() {
+					var canvas = document.getElementById('mycanvas');
+					var ctx = canvas.getContext('2d');
+					
+					
+
+
+var drawSkyAndGrass = function (ctx){
+	// Create a CanvasGradient object in linGrad.
+	// The gradient line is defined from the top to the bottom of the canvas.
+	var linGrad = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
+	// Start off with sky blue at the top.
+	linGrad.addColorStop(0, '#00BFFF');
+	// Fade to white in the middle.
+	linGrad.addColorStop(0.5, 'white');
+	// Green for the top of the grass.
+	linGrad.addColorStop(0.5, '#55dd00');
+	// Fade to white a the bottom.
+	linGrad.addColorStop(1, 'white');
+	// Use the CanvasGradient object as the fill style.
+	ctx.fillStyle = linGrad;
+	// Finally, fill a rectangle the same size as the canvas.
+	ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+};
+
+var drawSun = function(ctx) {
+    // Create a radial gradient with a 32 pixel radius inner circle
+    // and a 64 pixel radius outer circle. Both are positioned at (64,64).
+    var radGrad = ctx.createRadialGradient(64, 64, 32, 64, 64, 64);
+    // The inner circle is white and opaque.
+    radGrad.addColorStop(0,'white');
+    // The outer circle is yellow and fully transparent,
+    // thus making the sun fade from solid white to tranparent yellow.
+    radGrad.addColorStop(1,'rgba(255,255,0,0)');
+    ctx.fillStyle = radGrad;
+    // Fill a 128 pixel wid rectangle with the sun gradient.
+    ctx.fillRect(0, 0, 128, 128);									
+};
+			
+	
+					drawSkyAndGrass(ctx);
+					drawSun(ctx);
+        			
+            });
+        </script>
+		<style type="text/css">
+
+			#mycanvas  {border:1px solid;position:absolute;top:0px;}
+		</style>
+    </head>
+ 
+    <body style="position:relative;">
+    	
+        <canvas  id="mycanvas" width = 500, height = 500>
+       
+        </canvas>
+       
+    </body>
+</html>
+<script>
+
+
+					
+				
+					
+</script>

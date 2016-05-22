@@ -1,0 +1,35 @@
+<html> 
+    <head>
+        <script type="text/javascript">
+            window.onload = function() {
+            
+                // Generate a new barcode when the submit button is clicked.
+                document.getElementById('submit').onclick = function() {
+                    // Get the text from the input.
+                    var text = document.getElementById('text-input').value;
+                    // Create the URL for QR bar codes
+                    var URL = "https://chart.googleapis.com/chart?" +
+                              "chs=256x256&" +                 // Size.
+                              "cht=qr&" +                      // Chart type.
+                              "chl=" + escape(text) + '&' +    // The text.
+                              "choe=UTF-8&";                   // Encoding.
+                    // Locate the image element in the DOM and set its src attribute.
+                    document.getElementById('chart').setAttribute('src', URL);
+                }
+            }
+            
+          
+        </script>
+    </head>
+    <body>
+        <!-- The image source will be changed when submit is pressed -->
+        <img id="chart" width = "256" height="256"/>
+        <hr/>
+        <label for ="text-input">Enter text:</label>
+        <input id="text-input" type="text" size="48" style="font-size:18px" />
+        <input id = "submit" type="button" value = "Create Barcode!"/>
+      
+       
+        </div>
+    </body>
+</html>

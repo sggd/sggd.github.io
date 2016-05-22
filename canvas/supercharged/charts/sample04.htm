@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <!-- Load the general Google AJAX API -->
+        <script type="text/javascript" src="https://www.google.com/jsapi">
+        </script>
+        <script type="text/javascript">
+            // Load the visualization API, using the 'corechart' package within it.
+            google.load("visualization", "1", {
+                packages: ["corechart"]
+            });
+            var chart;
+            // Define a function to draw the chart.
+            var drawChart = function() {
+                // Create a data table (initially empty).
+                var data = new google.visualization.DataTable();
+                // Define the columns in the table.
+                data.addColumn('string', 'Day');
+                data.addColumn('number', 'Cookies');
+                data.addColumn('number', 'Cakes');
+                // Specify the number of rows in the table.
+                data.addRows(3);
+                // Now add the data into each cell of the table.
+
+                // Row 0
+                data.setValue(0, 0, 'Monday');
+                data.setValue(0, 1, 90);
+                data.setValue(0, 2, 75);
+                // Row 1
+                data.setValue(1, 0, 'Tuesday');
+                data.setValue(1, 1, 40);
+                data.setValue(1, 2, 65);
+                // Row 2
+                data.setValue(2, 0, 'Wednesday');
+                data.setValue(2, 1, 60);
+                data.setValue(2, 2, 35);
+                
+                // Find an element in the page to draw the chart into.
+                chartElement = document.getElementById('chart');
+                    // Create a chart object.
+                chart = new google.visualization.ColumnChart(chartElement);
+                // Draw it!
+                chart.draw(data, {
+                    width: 500,
+                    height: 300,
+                    title: 'Bakery Sales',
+                    vAxis: {
+                        minValue: 0,
+                        maxValue: 100
+                    }
+                });
+                
+                // Add an event listener for onmouseover.
+                // It sets the hover-text paragraph on the page to show
+                // the row and column.
+                google.visualization.events.addListener(chart, 'onmouseover',
+                function(event){
+                    document.getElementById('hover-text').innerHTML =
+                        event.row + ' ' + event.column;
+                });
+                
+                // Add an event listener for onmouseover.
+                // It clears the hover-text paragraph.
+                google.visualization.events.addListener(chart, 'onmouseout',
+                function(event){
+                    document.getElementById('hover-text').innerHTML = "";
+                });
+                
+                // This event listener shows various details about
+                // the cell/column being clicked.
+                // Columns are selected by clicking the legends.
+                google.visualization.events.addListener(chart, 'select',
+                function(){
+                    var selectData = chart.getSelection(),
+                        message = '',row,column;
+                    for(var i=0; i<selectData.length; i++) {
+                    
+                        var info = selectData[i];
+                        row = info.row;
+                        column = info.column;
+                        // If both row and column are set,
+                        // then a specific cell is selected.
+                        if (row !== undefined && column !== undefined) {
+                            message += 'cell[' + row + ',' + column + ']=' +
+                            data.getValue(row, column) + ', ';
+                        }
+                        // Otherwise just show the row...
+                        else if (row !== undefined ) {
+                           message += 'row=' + row + ', ';
+                        }
+                        // Or column.
+                        else if (column !== undefined ) {
+                           message += 'column=' + column + ', ';
+                        }
+                    }
+                    alert (message);
+                 });
+            }
+            // Wait for the API loaded event to happen, then draw the chart.
+            google.setOnLoadCallback(drawChart);
+        </script>
+    </head>
+    
+    <body>
+        <!-- This is the element into which the chart will be drawn. -->
+        <div id="chart"></div>
+        <!-- This paragraph text will change with the hover events. -->
+        <p id="hover-text"></p>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+    	<title>
+    Correct implementation of animation in Canvas.
+	</title>  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript"
+        src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js">
+    </script>
+    <script>
+        $(function() {
+            var a_canvas = $("#a_canvas")[0],
+                ctx = a_canvas.getContext("2d"),
+                p = 0;
+           
+            // We use setInterval() to create a delay between iterations.
+            setInterval(function() {
+                // Clear canvas.
+                ctx.clearRect(0, 0, a_canvas.width, a_canvas.height);
+                // Restart at top left count reaches 450.
+                if (p++ > 450) {
+                    p = 0
+                };
+                // Draw a rectangle.
+                ctx.fillStyle = "rgb(0,0,255)";
+                ctx.fillRect(p, p, 50, 50);
+            }, 30);
+
+        });
+    </script>
+</head>
+<body>
+     <p>Correct implementation of animation using Canvas.</p>
+           <p><a href='/book'><<< Back</a></p>
+    <canvas id="a_canvas" width=500 height=500>
+    </canvas>
+</body>

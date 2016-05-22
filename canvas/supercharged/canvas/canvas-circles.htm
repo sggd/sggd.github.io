@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>    
+    <head>
+       
+        <script type="text/javascript"
+            src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js">
+        </script>
+		<script type="text/javascript">
+			 $(function() {
+					var canvas = document.getElementById('mycanvas');
+					var ctx = canvas.getContext('2d');
+
+// Draw various filled circles.                    
+var draw = function(ctx) {
+	var endAngle = 0.0;
+	for(var x=50;x<500;x+=100) {
+		ctx.beginPath();  
+		ctx.moveTo(x,190);  
+		endAngle += (2*Math.PI) / 5;
+		ctx.arc(x,190,50, 0, endAngle, false);
+		ctx.fill();
+	}
+	endAngle = 0.0;
+	for(x=50;x<500;x+=100) {
+		ctx.beginPath();  
+		ctx.moveTo(x,310);  
+		endAngle += (2*Math.PI) / 5;
+		ctx.arc(x,310,50, 0, endAngle, true);
+		ctx.fill();
+	}
+};		
+
+        draw(ctx);
+        			
+            });
+        </script>
+		<style type="text/css">
+			#mycanvas  {border:1px solid;position:absolute;top:0px;}
+		</style>
+    </head>
+ 
+    <body style="position:relative;">
+    	
+        <canvas  id="mycanvas" width = 500, height = 500>
+       
+        </canvas>
+       
+    </body>
+</html>
+<script>
+
+
+					
+				
+					
+</script>

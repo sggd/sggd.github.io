@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Ext JS</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+    <!-- Load the Ext JS CSS. -->
+    <link rel="stylesheet" type="text/css" href="http://extjs.cachefly.net/ext-3.3.1/resources/css/ext-all.css" /> 
+    
+    <!-- Load the Ext JS base JavaScript. -->
+    <script type="text/javascript" src="http://extjs.cachefly.net/ext-3.3.1/adapter/ext/ext-base.js"></script> 
+    
+    <!-- Load the rest of Ext JS.  -->
+    <script type="text/javascript" src="http://extjs.cachefly.net/ext-3.3.1/ext-all.js"></script> 
+    
+    <script type="text/javascript">
+               
+    // Tell Ext JS where to find a transparent gif image
+    // (used for rendering various elements).
+
+    Ext.BLANK_IMAGE_URL = 
+        'http://extjs.cachefly.net/ext-3.0.0/resources/images/default/s.gif';
+
+    // Ext JS onReady is called when the DOM has loaded,
+    // similar to jQuery's $(function(){}).
+    Ext.onReady(
+        function(){
+        
+            // Create a DateField object.
+            var dateField = new Ext.form.DateField({
+                fieldLabel: 'Date Widget',
+                emptyText:'Enter date...',
+                format:'Y-m-d',
+                width: 128
+            }),
+            
+            // Create a Slider Object.
+            slider = new Ext.Slider({
+                width: 280,
+                minValue: 0,
+                maxValue: 100,
+                plugins: new Ext.slider.Tip()
+            }),
+            
+            // Create a Spacer Object.
+            space = new Ext.Spacer({
+                height:64
+            }),
+            
+            // Create a Window object to attach all of the above.
+            win = new Ext.Window({
+                title: 'Ext JS Demo',
+                bodyStyle:'padding: 10px',
+                width:320,
+                height:280,
+                items:[dateField, space, slider],
+                layout:'form'
+            });
+            
+            // Show the window.
+            win.show();
+        }
+    );
+    </script>
+</head>
+    <body>
+    </body>
+</html>

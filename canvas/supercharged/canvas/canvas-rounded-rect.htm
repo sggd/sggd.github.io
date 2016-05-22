@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>    
+    <head>
+       <title>Canvas Rounded Rectangles</title>
+       
+        <script type="text/javascript">
+  
+			window.onload = function() {
+					var canvas = document.getElementById('mycanvas');
+					var ctx = canvas.getContext('2d');
+
+var drawRoundedRect = function (ctx, x, y, w, h, cr) {
+    ctx.beginPath();
+    ctx.moveTo(x + w / 2, y);              // Start in the middle of the top edge.
+    ctx.arcTo(x + w, y, x + w, y + h, cr); // Top edge and upper-right corner.
+    ctx.arcTo(x + w, y + h, x, y + h, cr); // Right edge and lower-right corner.
+    ctx.arcTo(x, y + h, x, y, cr);         // Bottom edge and lower-left corner
+    ctx.arcTo(x, y, x + w, y, cr);         // Left edge and upper-left corner.
+    ctx.closePath();
+    ctx.strokeStyle = '#f00';              // Set stroke color to bright red.
+    ctx.lineWidth = 4;                     // Set line width to 4 pixels.
+    ctx.stroke();
+    ctx.fillStyle = '#0f0';                // Here we specify a green fill.
+    ctx.fill();
+	
+};
+
+
+			
+                var cr = 0;
+                for(x=0;x<500;x+=100) {
+                    drawRoundedRect(ctx,x+5,ctx.canvas.height/2-45,90,90,cr);
+                    cr += Math.PI*2;
+                }
+					
+};
+        </script>
+		<style type="text/css">
+			#mycanvas  {border:1px solid;}
+		</style>
+    </head>
+ 
+    <body>
+
+        <canvas  id="mycanvas" width = 500, height = 500>
+        </canvas>
+       
+    </body>
+</html>
+<script>
+
+
+					
+				
+					
+</script>

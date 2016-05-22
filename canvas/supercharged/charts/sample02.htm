@@ -1,0 +1,64 @@
+<html>
+    
+    <head>
+        <title>Random Chart - Refresh Page</title>
+        <script type="text/javascript">
+            var extendedEncode = function (valueArray, maxVal) {
+				var extendedEncoding = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.',
+					extendedEncodingLen = extendedEncoding.length,
+					exLenSquared = extendedEncodingLen * extendedEncodingLen,
+					chartData = '';
+				for (var i = 0, len = valueArray.length; i < len; i++) {
+					var numericVal = valueArray[i];
+					// Scale the value to fit within maxVal.
+					var scaledVal = Math.floor(exLenSquared * numericVal / maxVal);
+					if (scaledVal > exLenSquared - 1) {
+						chartData += "..";
+					} else if (scaledVal < 0) {
+						// Negative values will be ignored.
+						chartData += '__';
+					} else {
+						// Calculate first and second characters and add them to the output.
+						var quotient = Math.floor(scaledVal / extendedEncodingLen);
+						var remainder = scaledVal - extendedEncodingLen * quotient;
+						chartData += extendedEncoding.charAt(quotient) + extendedEncoding.charAt(remainder);
+					}
+				}
+				return chartData;
+			};
+ 
+            // Fill two arrays representing the two data sets with random values.
+            var dataSet1 = [];
+            var dataSet2 = [];
+            var maxVal = 100;
+            for (var i = 0; i < 3; i++) {
+                dataSet1.push(Math.random() * maxVal);
+                dataSet2.push(Math.random() * maxVal);
+            }
+            // Create the URL using the random data sets.
+            window.onload = function() {
+                var URL = 'https://chart.googleapis.com/chart?cht=bvg&' +
+                           'chd=e:' +
+                           extendedEncode(dataSet1, maxVal) + ',' + 
+                           extendedEncode(dataSet2, maxVal) +
+                           '&chs=500x300' +
+                           '&chxt=x,y' +
+                           '&chco=4D89F9,C6D9FD' +
+                           '&chdl=Cookies|Cakes' +
+                           '&chbh=30,10,20' +
+                           '&chl=Monday|Tuesday|Wednesday';
+
+                // Locate the image element in the DOM and set its src attribute.
+                var image = document.getElementById('chart');
+                image.setAttribute('src', URL);
+            }
+        </script>
+    </head>
+    
+    <body>
+        <!-- The image source will be changed on each page refresh. -->
+        <img id="chart">
+        </div>
+    </body>
+
+</html>

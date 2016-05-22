@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Canvas Blue Rectangle</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" 
+        src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js">
+    </script>
+    <script>
+        $(document).ready(function() {
+            var a_canvas = $("#a_canvas")[0],
+                ctx = a_canvas.getContext("2d");
+            ctx.fillStyle = "rgb(0,0,255)";
+            ctx.fillRect(50, 25, 150, 100);
+        });
+    </script>
+</head>
+<body>
+    <canvas id="a_canvas">
+    </canvas>
+</body>
+</html>
