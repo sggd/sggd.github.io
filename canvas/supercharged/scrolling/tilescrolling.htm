@@ -272,7 +272,7 @@ loadMap("map1.tmx", $('#viewports'), function (tileScrollers) {
 	$('#viewports').bind('touchstart',function (ev) {
 	        
 			ev.preventDefault();
-            var touch = e.originalEvent.changedTouches[0];
+            var touch = ev.originalEvent.changedTouches[0];
 			ev={
               clientX: touch.pageX,
               clientY: touch.pageY
