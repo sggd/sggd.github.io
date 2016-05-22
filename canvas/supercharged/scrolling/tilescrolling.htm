@@ -285,6 +285,22 @@ loadMap("map1.tmx", $('#viewports'), function (tileScrollers) {
         ySpeed /= (viewHeight / 2);
         ySpeed *= 10;
     });
+	$('#viewports').bind('touchmove',function (ev) {
+	        
+			ev.preventDefault();
+            var touch = ev.originalEvent.changedTouches[0];
+			ev={
+              clientX: touch.pageX,
+              clientY: touch.pageY
+            }
+			
+        xSpeed = ev.clientX - (viewWidth / 2);
+        xSpeed /= (viewWidth / 2);
+        xSpeed *= 10;
+        ySpeed = ev.clientY - (viewHeight / 2);
+        ySpeed /= (viewHeight / 2);
+        ySpeed *= 10;
+    });
     // Every 30 milliseconds, update the scroll positions
     // for the three tileScrollers. 
     setInterval(function () {
