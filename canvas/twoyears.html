@@ -17,7 +17,7 @@
 time=-1;
 	              words ={
 	  			  length:57,
-				  words:'小傻瓜 笨蛋 卿同学 在一起 信心 one_mouth_ed 和屯夫人 温柔可爱 善良美丽 。。。。漂亮 不。。。。     ',
+				  words:'小傻瓜 笨蛋 卿同学 在一起 信心 two_years_ed 和屯夫人 温柔可爱 善良美丽 。。。。漂亮 东湖绿道     ',
 				  p:-1,
 				  word:function(){
 				      if(this.p>=this.length)this.p=-1;
@@ -31,7 +31,7 @@ time=-1;
 				  
 				  wordN ={
 	  			  length:76,
-				  words:'Love 当我想起你 一个月了 想长肉肉 加油 法学姑娘最可爱 QML&LH 武汉 长沙 ~感谢~ 早睡早起 司考必胜 樱花和你 求调戏 懒猫起床啦   ',
+				  words:'Love 当我想起你 一个月了 想长肉肉 加油 法学姑娘最可爱 QML&LH 武汉 深圳 ~感谢~ 早睡早起 小卿老师 樱花和你 阳光好 懒猫起床啦   ',
 				  p:-1,
 				  word:function(){
 				      if(this.p>=this.length)this.p=-1;
@@ -44,15 +44,15 @@ time=-1;
 	              };
 				  
 				 bgWords ={
-	  			  length:200,
+	  			  length:205,
 				  
-				  height:5,
-				  width:40,
-				  words:'Lovennnn曾与无数口井对弈n布下春天的棋局n许多街巷通n往植物的顶端nn'
+				  height:15,
+				  width:47,
+				  words:'Lovennnn曾与无数口井对弈n布下春天的棋局n许多街巷n通往植物的顶端nn'
 					 +'若骑行穿过塔楼n遥望悬挂的钟表n三点以后，告别风n给恋人戴一顶草帽nn'
 					 +'墙壁上猫永远捉耗子n涂着鸦，听着阳光咳嗽n喇叭样的花朵n依吻栏杆斑斓的锈nn'
-					 +'生煎虎耳草n也医不了云慌乱的影n拆散一个梦爱了几年几年nn'
-					 +'就不再虚饮彼此n瓶中供养芦苇和波斯菊n一株叫丈夫n一株叫妻子nnnnFrom HuanTo  MeiMeinnnn',
+					 +'生煎虎耳草n也医不了云慌乱的影n拆散一个梦n爱了几年几年nn'
+					 +'不再虚饮彼此n瓶中供养绿萝和波斯菊n一个叫深圳n一个叫武汉nnnnFrom HuanTo  Meinnnn要把方块点击完喔 ',
 				  p:-1,
 				  word:function(i){
 					  return this.words[i];
@@ -364,14 +364,18 @@ touchTime = -1;
   
   if(word=='n'){
     bgWords.width--;
-	bgWords.height = 5;
+	bgWords.height = 15;
 	
 	setTimeout('thebgword()',Math.random()*1000);
   
   }
+  else if(word=='要'){
+	styles.size = two.width>two.height?two.height/100:two.width/100;
+	setTimeout('thebgword()',Math.random()*1000);
+  }
 
   else if(time<bgWords.length){
-    var directions=two.makeText(word, two.width / 20*bgWords.width, two.height/20*(bgWords.height++), styles);
+    var directions=two.makeText(word, two.width / 50*bgWords.width, two.height/50*(bgWords.height++), styles);
     directions.fill = '#ffd5ab';
 
 	setTimeout('thebgword()',Math.random()*500);
