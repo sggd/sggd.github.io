@@ -44,15 +44,15 @@ time=-1;
 	              };
 				  
 				 bgWords ={
-	  			  length:205,
+	  			  length:210,
 				  
 				  height:15,
 				  width:47,
-				  words:'Lovennnn曾与无数口井对弈n布下春天的棋局n许多街巷n通往植物的顶端nn'
-					 +'若骑行穿过塔楼n遥望悬挂的钟表n三点以后，告别风n给恋人戴一顶草帽nn'
-					 +'墙壁上猫永远捉耗子n涂着鸦，听着阳光咳嗽n喇叭样的花朵n依吻栏杆斑斓的锈nn'
-					 +'生煎虎耳草n也医不了云慌乱的影n拆散一个梦n爱了几年几年nn'
-					 +'不再虚饮彼此n瓶中供养绿萝和波斯菊n一个叫深圳n一个叫武汉nnnnFrom HuanTo  Meinnnn要把方块点击完喔 ',
+				  words:'Lovennnn曾与无数口井对弈  布下春天的棋局n许多街巷  通往植物的顶端nn'
+					 +'若骑行穿过塔楼  遥望悬挂的钟表n三点以后，告别风  给恋人戴一顶草帽nn'
+					 +'墙壁上猫永远捉耗子  涂着鸦，听着阳光咳嗽n喇叭样的花朵  依吻栏杆斑斓的锈nn'
+					 +'生煎虎耳草  也医不了云慌乱的影n拆散一个梦  爱了几年几年nn'
+					 +'不再虚饮彼此  瓶中供养绿萝和波斯菊n一个叫深圳  一个叫武汉nnnnFrom HuanTo  Meinnnn要把方块点击完喔 ',
 				  p:-1,
 				  word:function(i){
 					  return this.words[i];
@@ -369,12 +369,12 @@ touchTime = -1;
 	setTimeout('thebgword()',Math.random()*1000);
   
   }
-  else if(word=='要'){
+
+  else if(time<bgWords.length){
+  if(word=='要'){
 	styles.size = two.width>two.height?two.height/100:two.width/100;
 	setTimeout('thebgword()',Math.random()*1000);
   }
-
-  else if(time<bgWords.length){
     var directions=two.makeText(word, two.width / 50*bgWords.width, two.height/50*(bgWords.height++), styles);
     directions.fill = '#ffd5ab';
 
