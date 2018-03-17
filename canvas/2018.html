@@ -30,8 +30,8 @@ time=-1;
 	              };
 				  
 				  wordN ={
-	  			  length:58,
-				  words:'Love 红包口令：一八零三一七 那些花儿 想长肉肉 法学姑娘最可爱 当我想起你  ~感谢~ 早睡早起 懒猫起床啦   ',
+	  			  length:27,
+				  words:'Love 红包口令：一八零三一七 那些花儿 ~感谢~ ',
 				  p:-1,
 				  word:function(){
 				      if(this.p>=this.length)this.p=-1;
@@ -372,7 +372,7 @@ touchTime = -1;
     bgWords.width--;
 	bgWords.height = 15;
 	
-	setTimeout('thebgword()',Math.random()*700);//1000
+	setTimeout('thebgword()',Math.random()*500);//1000
   
   }
 
@@ -386,7 +386,7 @@ touchTime = -1;
     var directions=two.makeText(word, two.width /30*bgWords.width, two.height/30*(bgWords.height++), styles);
     directions.fill = '#ffd5ab';
 
-	setTimeout('thebgword()',Math.random()*300);//500
+	setTimeout('thebgword()',Math.random()*250);//500
     }else if(time>=bgWords.length){
 	touchTime=0;
 circle.fill = 'rgb(255,182,193)';
