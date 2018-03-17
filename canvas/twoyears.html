@@ -372,7 +372,7 @@ touchTime = -1;
     bgWords.width--;
 	bgWords.height = 15;
 	
-	setTimeout('thebgword()',Math.random()*1);//1000
+	setTimeout('thebgword()',Math.random()*1000);//1000
   
   }
 
@@ -386,7 +386,7 @@ touchTime = -1;
     var directions=two.makeText(word, two.width / 50*bgWords.width, two.height/50*(bgWords.height++), styles);
     directions.fill = '#ffd5ab';
 
-	setTimeout('thebgword()',Math.random()*1);//500
+	setTimeout('thebgword()',Math.random()*500);//500
     }else if(time>=bgWords.length){
 	touchTime=0;
 circle.fill = 'rgb(0, 191, 168)';
