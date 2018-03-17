@@ -16,8 +16,8 @@
       <script>
 time=-1;
 	              words ={
-	  			  length:57,
-				  words:'小傻瓜 笨蛋 卿同学 在一起 信心 two_years_ed 和屯夫人 温柔可爱 善良美丽 。。。。漂亮 东湖绿道     ',
+	  			  length:100,
+				  words:'看樱花的时候下雨了 武昌站的摩的师傅 找七遇旅社 卿同学和昙华林的猫 湖师图书馆里自习 看橘子洲的烟花 一上午就能速成单车 所以你很聪明 two_years_ed 最温柔可爱的 最美丽善良的 还是你还是你  ',
 				  p:-1,
 				  word:function(){
 				      if(this.p>=this.length)this.p=-1;
@@ -31,7 +31,7 @@ time=-1;
 				  
 				  wordN ={
 	  			  length:76,
-				  words:'Love 当我想起你 一个月了 想长肉肉 加油 法学姑娘最可爱 QML&LH 武汉 深圳 ~感谢~ 早睡早起 小卿老师 樱花和你 阳光好 懒猫起床啦   ',
+				  words:'Love 当我想起你 那些花儿 想长肉肉 加油 法学姑娘最可爱 QML&LH 武汉 深圳 ~感谢~ 早睡早起 小卿老师 长沙和你 阳光好 懒猫起床啦   ',
 				  p:-1,
 				  word:function(){
 				      if(this.p>=this.length)this.p=-1;
@@ -44,15 +44,15 @@ time=-1;
 	              };
 				  
 				 bgWords ={
-	  			  length:210,
+	  			  length:250,
 				  
 				  height:15,
-				  width:47,
-				  words:'Lovennnn曾与无数口井对弈  布下春天的棋局n许多街巷  通往植物的顶端nn'
-					 +'若骑行穿过塔楼  遥望悬挂的钟表n三点以后，告别风  给恋人戴一顶草帽nn'
-					 +'墙壁上猫永远捉耗子  涂着鸦，听着阳光咳嗽n喇叭样的花朵  依吻栏杆斑斓的锈nn'
-					 +'生煎虎耳草  也医不了云慌乱的影n拆散一个梦  爱了几年几年nn'
-					 +'不再虚饮彼此  瓶中供养绿萝和波斯菊n一个叫深圳  一个叫武汉nnnnFrom HuanTo  Meinnnn要把方块点击完喔 ',
+				  width:40,
+				  words:'s9 Lovenns9曾与无数口井对弈nns8布下春天的棋局 许多街巷 nn'
+					 +'s7通往植物的顶端 若骑行穿过塔楼 nns7遥望悬挂的钟表 三点以后，告别风 nn'
+					 +'s8给恋人戴一顶草帽 墙壁上猫永远捉耗子 nns9涂着鸦，听着阳光咳嗽 喇叭样的花朵nn'
+					 +'s9依吻栏杆斑斓的锈 生煎虎耳草 也医不了nns8云慌乱的影 拆散一个梦 爱了几年几年nn'
+					 +'s7不再虚饮彼此 瓶中供养绿萝和波斯菊nns7一个叫深圳 一个叫武汉 2016 nns8Hua & MeiMei nns92018 0317nns9 把方块点完啦 ',
 				  p:-1,
 				  word:function(i){
 					  return this.words[i];
@@ -117,13 +117,13 @@ touchTime = -1;
 			  if(touchTime>=0){
               //var r = Math.random();
               //var character = String.fromCharCode(Math.floor(r*26) + (r>0.5?97:65)); 
-			  if(touchTime<16){
+			  if(touchTime<12){
 			  touchTime++;
 			  var character = words.word();
 			  //alert(character);
               add(character);
               }
-			  else if(touchTime==16){
+			  else if(touchTime==12){
 			  			  touchTime++;
 			  two.clear();
 			  }else{
@@ -361,24 +361,32 @@ touchTime = -1;
 	  		  function thebgword(){
   time++;
   var word = bgWords.word(time);
-  
+  if(word=='s'){
+	time++;
+	bgWords.height = bgWords.word(time);
+	console.log(bgWords.height);
+	time++;
+	word = bgWords.word(time);
+  }
   if(word=='n'){
     bgWords.width--;
 	bgWords.height = 15;
 	
-	setTimeout('thebgword()',Math.random()*1000);
+	setTimeout('thebgword()',Math.random()*1);//1000
   
   }
 
   else if(time<bgWords.length){
+  /*
   if(word=='要'){
 	styles.size = two.width>two.height?two.height/100:two.width/100;
-	setTimeout('thebgword()',Math.random()*1000);
-  }
+	setTimeout('thebgword()',Math.random()*1);//1000
+  }*/
+ 
     var directions=two.makeText(word, two.width / 50*bgWords.width, two.height/50*(bgWords.height++), styles);
     directions.fill = '#ffd5ab';
 
-	setTimeout('thebgword()',Math.random()*500);
+	setTimeout('thebgword()',Math.random()*1);//500
     }else if(time>=bgWords.length){
 	touchTime=0;
 circle.fill = 'rgb(0, 191, 168)';
